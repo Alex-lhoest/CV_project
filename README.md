@@ -7,4 +7,8 @@
 [canny](https://docs.opencv.org/master/da/d22/tutorial_py_canny.html)  
 [hough](https://docs.opencv.org/master/d6/d10/tutorial_py_houghlines.html): detect lines  
 
+## Jupyter Notebook
+
+[part1](tasks.ipynb)
+
 
