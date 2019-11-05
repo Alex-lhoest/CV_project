@@ -12,4 +12,4 @@
 
 ## Jupyter Notebook
 
-[part1](tasks.ipynb)
+[`sudoku`](sudoku.ipynb)
