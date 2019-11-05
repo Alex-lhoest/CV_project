@@ -12,4 +12,4 @@
 
 ## Jupyter Notebook
 
-[`sudoku`](sudoku.ipynb)
+[`main`](main.ipynb)
