@@ -12,4 +12,4 @@
 
 ## Jupyter Notebook
 
-[`main`](main.ipynb)
+[`main`](Part1/codes/main.ipynb)
