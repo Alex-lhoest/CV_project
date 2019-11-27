@@ -86,4 +86,4 @@ if __name__ == '__main__':
                 if params.download_path:
                     # To download the original files that have been uploaded to Cytomine
                     # Attributes of ImageInstance are parsed in the filename
-                    image.download(os.path.join(params.download_path, str(id), "{originalFilename}"))
+                    image.download(os.path.join(params.download_path, str(project.id), "{originalFilename}"))
