@@ -32,6 +32,7 @@ from cytomine import Cytomine
 from cytomine.models import AnnotationCollection, ImageInstanceCollection, ProjectCollection
 
 import pandas as pd
+import json
 
 __author__ = "Rubens Ulysse <urubens@uliege.be>"
 
@@ -84,9 +85,9 @@ if __name__ == '__main__':
 
             # We want all annotations in a given project.
             annotations = AnnotationCollection()
-            annotations.project = project.id  # Add a filter: only annotations from this project
+            annotations.project = 1340 #project.id  # Add a filter: only annotations from this project
             # You could add other filters:
-            # annotations.image = id_image => Add a filter: only annotations from this image
+            annotations.image = 238453 #452263 #id_image => Add a filter: only annotations from this image
             # annotations.images = [id1, id2] => Add a filter: only annotations from these images
             # annotations.user = id_user => Add a filter: only annotations from this user
             # ...
@@ -96,7 +97,6 @@ if __name__ == '__main__':
             # ...
             # => Fetch annotations from the server with the given filters.
             annotations.fetch()
-            print(annotations)
 
             for annotation in annotations:
                 print("ID: {} | Image: {} | Project: {} | Term: {} | User: {} | Area: {} | Perimeter: {} | WKT: {}".format(
@@ -109,6 +109,7 @@ if __name__ == '__main__':
                     annotation.perimeter,
                     annotation.location
                 ))
+
 
                 # Annotation location is the annotation geometry in WKT format.
                 # See https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
