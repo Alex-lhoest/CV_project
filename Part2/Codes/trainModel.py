@@ -53,6 +53,9 @@ def test_generator():
     
     return test_generator
 
+train_generator = train_generator()
+test_generator = test_generator()
+
 # Create the model with the unet architecture
 model = unet()
 
