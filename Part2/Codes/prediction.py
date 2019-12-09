@@ -18,20 +18,18 @@ inp = np.expand_dims(image_inp, axis=0)
 # Predict the segmanted mask given the model
 y_pred = model.predict(inp)
 
-print(y_pred.shape)
-sys.exit()
-
-# Reshape the output (512, 512)
+# Reshape the output (240, 320)
 y_pred = np.reshape(y_pred, (240, 320))
+
 
 # Set all pixels under a threshold at 0 and the other at 1
 # This threshold is computed manually 
-y_pred[y_pred < 0.1] = 0
-y_pred[y_pred >= 0.1] = 1
+# y_pred[y_pred < 0.1] = 0
+# y_pred[y_pred >= 0.1] = 1
 
 # Add the segmantation to the input image
 # Red channel is used for the roads and the Green one for the buildings
-image_inp[..., 0] += y_pred_r
+image_inp[..., 0] += y_pred
 
 image_inp[image_inp > 1] = 1
 
