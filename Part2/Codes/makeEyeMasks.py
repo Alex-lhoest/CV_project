@@ -9,15 +9,15 @@ import sys
 import os
 
 ##Paths of image and corresponding annotation files:
-image_file_path = '../images/'
+image_file_path = '../train/images/'
 annotation_file_path = '../annotations/'
 
 ##Destination file path of masks:
-mask_file_path = '../elps_masks/'
+mask_file_path = '../train/masks/'
 
 ##Create file for the masks if it does not already exists
-if not os.path.isdir(mask_path):
-        os.makedirs(mask_path)
+if not os.path.isdir(mask_file_path):
+        os.makedirs(mask_file_path)
 
 ##Loop over all Eye Ellipse images and process them:
 for img_name in os.listdir(image_file_path):
