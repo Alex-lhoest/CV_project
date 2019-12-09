@@ -18,11 +18,11 @@ inp = np.expand_dims(image_inp, axis=0)
 # Predict the segmanted mask given the model
 y_pred = model.predict(inp)
 
-print(y.shape)
+print(y_pred.shape)
 sys.exit()
 
 # Reshape the output (512, 512)
-y_pred = np.reshape(y_pred_r, (240, 320))
+y_pred = np.reshape(y_pred, (240, 320))
 
 # Set all pixels under a threshold at 0 and the other at 1
 # This threshold is computed manually 
