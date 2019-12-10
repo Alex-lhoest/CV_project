@@ -3,13 +3,19 @@ import numpy as np
 from PIL import Image
 import keras
 
+from unet import mean_iou
+
 import sys
 
+dependencies = {
+    'mean_iou': mean_iou
+}
 # Load the models
-model = load_model('unet_eye_weights.84-0.10.h5')
+model = load_model('../models/300epochs/unet_weights.34-0.01.h5', custom_objects=dependencies)
 
 # Load the image
-image_inp = Image.open('../eval/images/input/elps_eye_14.png')
+image_inp = Image.open('../eval/images/input/elps_eye_205.png')
+# image_inp = Image.open('../NoEllipses/noelps_eye2015-01-16_02-46-45-005.png')
 
 # Scale the input between [0 1] and change the arrays (1, 512, 512, 3)
 image_inp = np.array(image_inp)/255.
