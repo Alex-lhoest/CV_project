@@ -11,6 +11,13 @@ from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as keras
 
+def mean_iou(y_true, y_pred):
+   score, up_opt = tf.metrics.mean_iou(y_true, y_pred, 2)
+   K.get_session().run(tf.local_variables_initializer())
+   with tf.control_dependencies([up_opt]):
+       score = tf.identity(score)
+   return score
+
 
 def unet(pretrained_weights = None,input_size = (240, 320, 3)):
     inputs = Input(input_size)
@@ -56,7 +63,7 @@ def unet(pretrained_weights = None,input_size = (240, 320, 3)):
 
     model = Model(input = inputs, output = conv10)
 
-    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy'])
+    model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy', mean_iou])
     
     #model.summary()
 

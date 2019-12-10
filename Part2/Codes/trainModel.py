@@ -62,17 +62,23 @@ model = unet()
 history = keras.callbacks.History()
 
 # Callbacks used to save the model if the model improve on the validation loss
-checkpoint = keras.callbacks.ModelCheckpoint('models/unet_weights.{epoch:02d}-{val_loss:.2f}.h5', 
+
+save_path = '../models/300epochs/'
+
+if not os.path.isdir(save_path):
+    os.makedirs(save_path)
+
+checkpoint = keras.callbacks.ModelCheckpoint(save_path + 'unet_weights.{epoch:02d}-{val_loss:.2f}.h5', 
                                              verbose=1, 
                                              monitor='val_loss', save_best_only=True, 
                                              mode='auto')
 
 # Tensorboard to check the evolution of the training                                      
-NAME = 'unet'
-tensorboard = TensorBoard(log_dir='logs/{}'.format(NAME))
+NAME = unet
+tensorboard = TensorBoard(log_dir=save_path + 'logs/{}'.format(NAME))
                                        
 
 # Fit the model with our model with the generators
-model.fit_generator(train_generator, steps_per_epoch=1050, epochs=1,
+model.fit_generator(train_generator, steps_per_epoch=1050, epochs=300,
                     shuffle=False, validation_data=test_generator, validation_steps=525//2,
                     callbacks=[checkpoint, history, tensorboard])
