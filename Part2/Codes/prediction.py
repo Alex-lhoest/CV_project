@@ -11,10 +11,11 @@ dependencies = {
     'mean_iou': mean_iou
 }
 # Load the models
-model = load_model('../models/300epochs/unet_weights.34-0.01.h5', custom_objects=dependencies)
+model = load_model('../models/final_model/unet_weights.39-0.01.h5')
 
 # Load the image
-image_inp = Image.open('../eval/images/input/elps_eye_2010.png')
+image_inp = Image.open('../test/images/input/elps_eye_999.png')
+mask_inp = Image.open('../test/masks/output/mask_eye_999.png')
 # image_inp = Image.open('../NoEllipses/noelps_eye2015-01-16_02-46-45-005.png')
 
 # Scale the input between [0 1] and change the arrays (1, 512, 512, 3)
@@ -45,3 +46,4 @@ image_out = keras.preprocessing.image.array_to_img(image_inp)
 
 # Save the image
 image_out.save("nice.png", format='png')
+
