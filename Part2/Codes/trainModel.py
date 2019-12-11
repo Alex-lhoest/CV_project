@@ -63,7 +63,7 @@ history = keras.callbacks.History()
 
 # Callbacks used to save the model if the model improve on the validation loss
 
-save_path = '../models/300epochs/'
+save_path = '../models/final_model/'
 
 if not os.path.isdir(save_path):
     os.makedirs(save_path)
@@ -79,6 +79,6 @@ tensorboard = TensorBoard(log_dir=save_path + 'logs/{}'.format(NAME))
                                        
 
 # Fit the model with our model with the generators
-model.fit_generator(train_generator, steps_per_epoch=1050, epochs=300,
+model.fit_generator(train_generator, steps_per_epoch=1838//2, epochs=100,
                     shuffle=False, validation_data=test_generator, validation_steps=525//2,
                     callbacks=[checkpoint, history, tensorboard])

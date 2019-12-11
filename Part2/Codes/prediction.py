@@ -14,7 +14,7 @@ dependencies = {
 model = load_model('../models/300epochs/unet_weights.34-0.01.h5', custom_objects=dependencies)
 
 # Load the image
-image_inp = Image.open('../eval/images/input/elps_eye_205.png')
+image_inp = Image.open('../eval/images/input/elps_eye_2010.png')
 # image_inp = Image.open('../NoEllipses/noelps_eye2015-01-16_02-46-45-005.png')
 
 # Scale the input between [0 1] and change the arrays (1, 512, 512, 3)
@@ -41,7 +41,7 @@ image_inp[image_inp > 1] = 1
 
 # Transform the array in a image representation
 image_out = keras.preprocessing.image.array_to_img(image_inp)
-image_out.show()
+# image_out.show()
 
 # Save the image
-# image_out.save("nice.png", format='png')
+image_out.save("nice.png", format='png')
