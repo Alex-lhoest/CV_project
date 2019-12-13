@@ -17,13 +17,13 @@ def get_annotations(write=False):
     count_elps_soccer = 0
     prev_name = ""
 
-    path = "../CV2019_Project/CV2019_Annots_test.csv"
+    path = "../CV2019_Project/CV2019_Annots_ElpsSoccer.csv"
     save_path = "../annotations/"
 
     f = pd.read_csv(path, header=None, delimiter=';', na_filter=False)
 
     for idx, row in f.iterrows():
-        element = re.sub("[^A-Z]", "", row[1])
+        element = re.sub("[^A-Z]", "", row[2])
         # Line element with 2 points only
         if element == "LINESTRING":
             if not row[6]:
@@ -55,7 +55,7 @@ def get_annotations(write=False):
                 prev_name = name
         
         elif element == "POLYGON":
-            i = 2
+            i = 3
             coord = []
             name = row[0]
             # print(idx)

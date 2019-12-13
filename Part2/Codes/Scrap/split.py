@@ -37,4 +37,4 @@ def split():
         shutil.move('../train/masks/output/mask_eye_' + i + '.png', '../test/masks/output/mask_eye_' + i + '.png')
 
 # sort()
-split()
+# split()
