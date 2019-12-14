@@ -7,10 +7,12 @@ def IOU_soccer():
     list_IOU = list()
     nb_real_ellipses = 0
     nb_found_ellipses = 0
+    nb_true_positive = 0
+    nb_positive_true = 0
     bad_files = list()
-    for file in os.listdir("positions"):
-        fp1 = open("positions/{}".format(file), "r")
-        fp2 = open("Coord_test/{}".format(file), "r")
+    for file in os.listdir("Data/positions_soccer"):
+        fp1 = open("data/positions_soccer/{}".format(file), "r")
+        fp2 = open("data/Coord_test_soccer/{}".format(file), "r")
         
         lines1 = fp1.readlines()
         nb_lines1 = np.shape(lines1)
@@ -23,6 +25,7 @@ def IOU_soccer():
             bad_files.append(file)
         nb_real_ellipses += nb_elps2
         nb_found_ellipses += nb_elps1
+        nb_true_positive += min(nb_elps2, nb_elps1)
         
         for i in range(nb_elps1):
             line1= lines1[i].split(' ')
@@ -65,9 +68,12 @@ def IOU_soccer():
             if IOU > 0:
                 list_IOU.append(IOU)
                 
-    return nb_real_ellipses, nb_found_ellipses, bad_files, mean(list_IOU), list_IOU
+    return nb_true_positive/nb_real_ellipses, nb_true_positive/nb_found_ellipses, bad_files, mean(list_IOU), list_IOU
 
 #print("nb_real_ellipses: {}".format(nb_real_ellipses))
 #print("nb_found_ellipses: {}".format(nb_found_ellipses))
 #print("bad files : {}".format(bad_files))
 #print("mean IOU: {}".format(mean(list_IOU)))
+
+
+
