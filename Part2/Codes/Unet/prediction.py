@@ -3,14 +3,9 @@ import numpy as np
 from PIL import Image
 import keras
 import os
-
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
 import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
-
 from unet import mean_iou
-
 import sys
 
 dependencies = {
@@ -78,11 +73,11 @@ def make_prediction():
     mask_inp.show()
 
     # Save the image
-    image_out.save("test.png", format='png')
+    # image_out.save("test.png", format='png')
 
 def save_results():
 
-    model = load_model('unet_weights.39-0.01.h5')
+    model = load_model('../../models/final_model/unet_weights.39-0.01.h5')
 
     count = len(os.listdir("../../test/images/input/"))
 
@@ -128,6 +123,7 @@ def save_results():
 
         np.save("IoU.txt", IoU)
 
-make_prediction()
+
+# make_prediction()
 
 # save_results()
