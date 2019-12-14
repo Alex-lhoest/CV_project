@@ -63,7 +63,7 @@ def getElpsParameters(input_arr):
     ret,thresh1 = cv2.threshold(array,100,255,cv2.THRESH_BINARY)
     conn_comp = cv2.connectedComponentsWithStats(thresh1, connectivity, cv2.CV_32S)
 
-    img_elps, a, b, xc, yc, theta = get_ellipse_param(output, conn_comp)
+    img_elps, a, b, xc, yc, theta = get_ellipse_param(input_arr, conn_comp)
 
     """
     tools.multiPlot( 1, 2, (output, img_elps),
