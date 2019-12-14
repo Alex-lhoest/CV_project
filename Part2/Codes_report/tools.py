@@ -2,7 +2,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 
-#############################################################################
 
 def multiPlot( n, m, img_tuple, title_tuple, cmap_tuple=None, dispType_tuple=None, vmin_tuple=None, vmax_tuple=None):
     plt.figure(figsize=(20,10))
@@ -46,12 +45,9 @@ def multiPlot( n, m, img_tuple, title_tuple, cmap_tuple=None, dispType_tuple=Non
     #manager.resize(*manager.window.maxsize())
     plt.show()
 
-#############################################################################
-
 def saturate_cast_uint8( image):
     return np.where( image > 255.0, 255.0, np.where( image < 0.0, 0.0, image)).astype( np.uint8)
 
-#############################################################################
 
 from matplotlib.colors import LinearSegmentedColormap
 
