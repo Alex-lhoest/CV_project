@@ -2,12 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 
-#############################################################################
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d3de06973b32ba4d34816c22b9c717dfbd4e3984
 def multiPlot( n, m, img_tuple, title_tuple, cmap_tuple=None, dispType_tuple=None, vmin_tuple=None, vmax_tuple=None):
     plt.figure(figsize=(20,10))
     for i in np.arange( n * m):
@@ -50,27 +45,17 @@ def multiPlot( n, m, img_tuple, title_tuple, cmap_tuple=None, dispType_tuple=Non
     #manager.resize(*manager.window.maxsize())
     plt.show()
 
-#############################################################################
-
 def saturate_cast_uint8( image):
     return np.where( image > 255.0, 255.0, np.where( image < 0.0, 0.0, image)).astype( np.uint8)
 
-#############################################################################
 
 from matplotlib.colors import LinearSegmentedColormap
 
-<<<<<<< HEAD
-def getRandomColorMap( num_colors):
-    colors = np.random.rand( num_colors, 3) * 0.75
-    colors[0, :] = 1
-=======
 def getRandomColorMap( num_colors, bg_color=1):
     colors = np.random.rand( num_colors, 3) * 0.75
     colors[0, :] = bg_color
->>>>>>> d3de06973b32ba4d34816c22b9c717dfbd4e3984
     colors = tuple(map(tuple, colors))
 
     labelColorMap = LinearSegmentedColormap.from_list('labelColorMap', colors, N=num_colors)
 
     return labelColorMap
-
